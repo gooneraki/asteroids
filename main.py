@@ -35,10 +35,18 @@ def main():
             if asteroid.collided(player):
                 print("Game over!")
                 return
+            
+            for bullet in shots:
+                if asteroid.collided(bullet):
+                    asteroid.split()
+                    bullet.kill()
+                    continue
 
         screen.fill("black")
         for drawel in drawable:
             drawel.draw(screen)
+
+        
         
         pygame.display.flip()
 
